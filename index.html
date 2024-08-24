@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lego Loves You&lt;3 - Information and commands for the Lego Hits You bot.">
+    <title>Lego Loves You&lt;3</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="background">
+        <video autoplay muted loop id="bg-video">
+            <source src="{{ url_for('static', filename='background.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <canvas id="canvas"></canvas>
+    <div class="navbar">
+        <h1>Lego Loves You&lt;3</h1>
+        <div class="button-container">
+            <a href="https://discord.gg/legolovesyou" target="_blank" class="button">
+                <img src="{{ url_for('static', filename='discord_logo.png') }}" alt="Discord" class="button-image">
+            </a>
+            <a href="https://github.com/JellyLovesYou" target="_blank" class="button">
+                <img src="{{ url_for('static', filename='github_logo.png') }}" alt="GitHub" class="button-image">
+            </a>
+            <a href="https://open.spotify.com/user/31wefjd5guvnfmnrypnbdzusizqy?si=3a150a2458424037" target="_blank" class="button">
+                <img src="{{ url_for('static', filename='spotify_logo.png') }}" alt="Spotify" class="button-image">
+            </a>
+            <a href="https://steamcommunity.com/profiles/76561199154358633/" target="_blank" class="button">
+                <img src="{{ url_for('static', filename='steam_logo.png') }}" alt="Steam" class="button-image">
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="title">
+            <h1>Welcome to my website!</h1>
+            <p>This website offers links to all things Lego, including details about my Discord bot—such as cogs, commands, todo list, credits, license, terms of service, and privacy policy—as well as general information like my Discord, GitHub, Spotify, and Steam profiles.</p>
+        </div>
+        <div class="tabs-container">
+            <div class="tab" onclick="toggleTab('Cogs')">Cogs</div>
+            <div class="tab" onclick="toggleTab('TodoList')">To-Do List</div>
+            <div class="tab" onclick="toggleTab('License')">License</div>
+            <div class="tab" onclick="toggleTab('TermsOfService')">Terms of Service</div>
+            <div class="tab" onclick="toggleTab('PrivacyPolicy')">Privacy Policy</div>
+            <div class="tab" onclick="toggleTab('Credits')">Credits</div>
+        </div>
+        <div class="cogs-container" onclick="toggleTab('Cogs')">
+            <div class="tab-content" id="Cogs">
+                <div class="tab" onclick="toggleTab('AdminCogs')">Administration</div>
+                <div class="tab" onclick="toggleTab('CodeCogs')">Code</div>
+                <div class="tab" onclick="toggleTab('GameCogs')">Games</div>
+                <div class="tab" onclick="toggleTab('InternetCogs')">Internet</div>
+                <div class="tab" onclick="toggleTab('MiscCogs')">Misc</div>
+                <div class="cogs-content">
+                    <ul class="command-list" id="AdminCogs">
+                        <li><span>antispam</span><h2>Manages antispam settings.</h2><p>Commands: antispamignore, antispam.</p><p>Usage: !antispamignore {channel_id}, !antispam {threshold}.</p></li>
+                        <li><span>autorole</span><h2>Assigns roles automatically when a user joins.</h2><p>Commands: autorole.</p><p>Usage: !autorole {rolename}.</p></li>
+                        <li><span>ban</span><h2>Bans a user from the server.</h2><p>Commands: ban, unban, banlist.</p><p>Usage: !ban {user}, !unban {userid}, !banlist.</p></li>   
+                        <li><span>blacklist</span><h2>Adds users or commands to the blacklist.</h2><p>Commands: blacklist.</p><p>Usage: !blacklist {user}.</p></li>
+                        <li><span>clear</span><h2>Clears messages from a channel.</h2><p>Commands: clear.</p><p>Usage: !clear {number}.</p></li>
+                        <li><span>commandlogs</span><h2>Logs all commands used.</h2><p>Commands: NA.</p><p>Usage: NA.</p></li>
+                        <li><span>deletenotes</span><h2>Deletes user notes.</h2><p>Commands: deletenotes.</p><p>Usage: !deletenotes {user}.</p></li>
+                        <li><span>exit</span><h2>Leaves a given server.</h2><p>Commands: exit.</p><p>Usage: !exit {server_id}.</p></li>
+                        <li><span>kick</span><h2>Kicks a user from the server.</h2><p>Commands: kick.</p><p>Usage: !kick {user}.</p></li>                  
+                        <li><span>messagelogger</span><h2>Logs messages from a channel.</h2><p>Commands: delog.</p><p>Usage: !delog {channel_id}.</p></li>
+                        <li><span>mute</span><h2>Mutes a user in the server.</h2><p>Commands: mute, unmute.</p><p>Usage: !mute {usage}, !unmute {user}.</p></li>
+                        <li><span>reactionrole</span><h2>Assigns roles based on reactions.</h2><p>Commands: rero.</p><p>Usage: !rero {message_id}, {emoji}, {rolename}.</p></li>
+                        <li><span>reload</span><h2>Reloads bot configurations.</h2><p>Commands: reload.</p><p>Usage: !reload.</p></li>
+                        <li><span>restart</span><h2>Restarts the bot.</h2><p>Commands: restart.</p><p>Usage: !restart.</p></li>
+                        <li><span>servers</span><h2>Displays the list of servers the bot is in.</h2><p>Commands: servers.</p><p>Usage: !servers.</p></li>
+                        <li><span>setrole</span><h2>Assigns a specific role to a user.</h2><p>Commands: sr, rr.</p><p>Usage: !sr {user} {rolename}, !rr {user} {rolename}.</p></li>
+                        <li><span>vc</span><h2>Manages voice channel settings.</h2><p>Commands: muteall, unmuteall, deafenall, undeafenall, kickall, lockvc, unlockvc.</p><p>Usage: !muteall, !unmuteall, !deafenall, !undeafenall, !kickall, !lockvc, !unlockvc.</p></li>
+                        <li><span>whitelist</span><h2>Adds users or commands to the whitelist.</h2><p>Commands: whitelist.</p><p>Usage: !whitelist.</p></li>
+                    </ul>
+                    <ul class="command-list" id="CodeCogs">
+                        <li><span>Compile</span><h2>Compiles a file.</h2><p>Commands: compile.</p><p>Usage: !compile {file}.</p></li>
+                        <li><span>Duplicates</span><h2>Checks a .txt file for duplicates, and sends it back after removing them.</h2><p>Commands: duplicates.</p><p>Usage: !duplicates {file}.</p></li>
+                        <li><span>Obfuscate</span><h2>Obfuscates a file.</h2><p>Commands: obfuscate, obf.</p><p>Usage: !obfuscate {file}, !obf {file}.</p></li>
+                    </ul>
+                    <ul class="command-list" id="GameCogs">
+                        <li><span>Apex</span><h2>Checks an Apex Legends user's stats.</h2><p>Commands: Apex.</p><p>Usage: !apex {user}.</p></li>
+                        <li><span>Ark</span><h2>Checks an Ark server's info.</h2><p>Commands: Ark.</p><p>Usage: !ark {server}.</p></li>
+                        <li><span>Destiny</span><h2>Checks a user's stats on Destiny 2.</h2><p>Commands: d2.</p><p>Usage: !d2 {user}.</p></li>
+                        <li><span>DinoStats</span><h2>Logs mutations and stats for a dino.</h2><p>Commands: stats, mut, remove.</p><p>Usage: !stats {name} {stats}, !stats clear, !mut {name} {stat}, !remove {name}.</p></li>
+                        <li><span>Minecraft</span><h2>Checks Minecraft users and servers for info.</h2><p>Commands: mclookup, mcserver.</p><p>Usage: !mclookup {user}, !mcserver {server}.</p></li>
+                        <li><span>PlaystationArk</span><h2>Looks up Playstation Ark server's info.</h2><p>Commands: ps.</p><p>Usage: !ps {server}.</p></li>
+                        <li><span>Windows10Ark</span><h2>Looks up Windows 10 Ark server's info.</h2><p>Commands: win10.</p><p>Usage: !win10 {server}.</p></li>
+                    </ul>
+                    <ul class="command-list" id="InternetCogs">
+                        <li><span>DDoS</span><h2>Simulates a DDoS attack.</h2><p>Commands: ddos.</p><p>Usage: !ddos {ip}, {port}, {time}.</p></li>
+                        <li><span>Lookup</span><h2>Looks up a given IP.</h2><p>Commands: lookup.</p><p>Usage: !lookup {ip}.</p></li>
+                        <li><span>Methods</span><h2>Lists the methods for the API.</h2><p>Commands: methods.</p><p>Usage: !methods.</p></li>
+                        <li><span>Ping</span><h2>Sends an ICMP ping to a given IP.</h2><p>Commands: ping</p><p>Usage: !ping {ip} {count}.</p></li>
+                        <li><span>ProxyOrg</span><h2>Organizes proxies by common ports: http-https, socks4/5, and others.</h2><p>Commands: proxyorg</p><p>Usage: !proxyorg {file}.</p></li>
+                        <li><span>Scapy</span><h2>Monitors an IP's outgoing traffic.</h2><p>Commands: scapy.</p><p>Usage: !scapy {ip} {duration}.</p></li>
+                        <li><span>sendattack</span><h2>Sends a given attack to a given IP using an API.</h2><p>Commands: api.</p><p>Usage: !api {ip} {port} {time} {method}.</p></li>
+                        <li><span>TCPing</span><h2>Scans ports with TCP packets to see if they are open.</h2><p>Commands: tcp.</p><p>Usage: !tcp {ip}, !tcp {port}.</p></li>
+                        <li><span>Vip</span><h2>Shows Vip methods on the API.</h2><p>Commands: vip.</p><p>Usage: !vip.</p></li>
+                        <li><span>Website</span><h2>Checks a website's info.</h2><p>Commands: website.</p><p>Usage: !website ssl {url}, !website dns {url}, !website status {url}, !website blocked {url}, !website hsts {url}, !website traceroute {url}, !website scrape {url}, !website proxys {url}, !website subdomains {url}, !website cf {url}, !website cloudflare {url}, !website http {url}, !website domain {url}, !website directories {url}, !website dirt {url}, !website help.</p></li>
+                    </ul>
+                    <ul class="command-list" id="MiscCogs">
+                        <li><span>Addnote</span><h2>Adds a note to a user for the info command.</h2><p>Commands: addnote.</p><p>Usage: !addnote {user} {note}.</p></li>
+                        <li><span>ColorSwap</span><h2>Swaps users' colors between two provided colors.</h2><p>Commands: shift, shifts, register.</p><p>Usage: !shift {number}, !shifts, !register.</p></li>
+                        <li><span>Credits</span><h2>Gives credit to all who helped on the bot.</h2><p>Commands: credits.</p><p>Usage: !credits.</p></li>
+                        <li><span>Help</span><h2>Shows all commands.</h2><p>Commands: help.</p><p>Usage: !help.</p></li>
+                        <li><span>Idget</span><h2>Gets the ID for people and roles.</h2><p>Commands: idget.</p><p>Usage: !idget {user}, !idget {role}.</p></li>
+                        <li><span>Info</span><h2>Shows Info about a user.</h2><p>Commands: info.</p><p>Usage: !info {user}.</p></li>
+                        <li><span>Invite</span><h2>Generates a bot invite.</h2><p>Commands: invite.</p><p>Usage: !invite.</p></li>
+                        <li><span>License</span><h2>Shows the license of the bot.</h2><p>Commands: license.</p><p>Usage: !license.</p></li>
+                        <li><span>Music</span><h2>Music related commands.</h2><p>Commands: join, leave, play.</p><p>Usage: !join, !leave, !play {url}.</p></li>
+                        <li><span>SaveChat</span><h2>Saves the chat to a .txt file.</h2><p>Commands: savechat.</p><p>Usage: !savechat.</p></li>
+                        <li><span>ServerInfo</span><h2>Shows info about the server.</h2><p>Commands: serverinfo</p><p>Usage: !serverinfo.</p></li>
+                        <li><span>Time</span><h2>Shows the current time in a given location.</h2><p>Commands: time.</p><p>Usage: !time.</p></li>
+                        <li><span>Todo</span><h2>Shows the Todo list for the bot.</h2><p>Commands: todo.</p><p>Usage: !todo.</p></li>
+                        <li><span>Translate</span><h2>Translates a message.</h2><p>Commands: translate.</p><p>Usage: !translate {message}, !translate {reply}.</p></li>
+                        <li><span>WallUpdate</span><h2>Posts messages on a channel.</h2><p>Commands: post</p><p>Usage: !post {image}, !post {"text"}.</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="TodoList">
+                <h2>To-Do List</h2>
+                <ul>
+                    <li>Finish the website!</li>
+                    <li>Add unblacklist command.</li>
+                    <li>Make commandslog either a command or module.</li>
+                    <li>Combine many cogs.</li>
+                </ul>
+            </div>
+            <div class="tab-content" id="License">
+                <h2>License</h2>
+                <p><strong>Effective Date:</strong> 7/7/2024</p>
+                <h3>1. License Grant:</h3>
+                <p><strong>1.1.</strong> Subject to the terms and conditions of this License, LegoLovesYou ("Licensor") grants to you ("Licensee") a non-exclusive, non-transferable license to use and run LegoHitsYou ("the Bot").</p>
+                <h3>2. Restrictions:</h3>
+                <p><strong>2.1.</strong> The Licensee shall not copy, distribute, modify, create derivative works of, reverse engineer, or attempt to obtain the source code of the Bot.</p>
+                <p><strong>2.2.</strong> The licensee shall not sublicense, sell, rent, lease, or otherwise transfer rights to the Bot to any third party.</p>
+                <p><strong>2.3.</strong> The licensee agrees to use the Bot in compliance with all applicable laws and regulations.</p>
+                <h3>3. Ownership:</h3>
+                <p><strong>3.1.</strong> The Bot is licensed, not sold. Licensor retains all rights, title, and interest in and to the Bot, including all intellectual property rights.</p>
+                <h3>4. Termination:</h3>
+                <p><strong>4.1.</strong> This License is effective until terminated. Licensor may terminate this License at any time upon notice to Licensee. Upon termination, the Licensee shall immediately cease all use of the Bot and destroy all copies thereof.</p>
+                <h3>5. Disclaimer of Warranty:</h3>
+                <p><strong>5.1.</strong> THE BOT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. THE LICENSOR DISCLAIMS ANY AND ALL LIABILITY ARISING FROM THE USE OF THE BOT.</p>
+                <h3>6. Limitation of Liability:</h3>
+                <p><strong>6.1.</strong> IN NO EVENT SHALL LICENSOR BE LIABLE FOR ANY DAMAGES (INCLUDING, WITHOUT LIMITATION, INCIDENTAL AND CONSEQUENTIAL DAMAGES, PERSONAL INJURY/WRONGFUL DEATH, LOST PROFITS, OR DAMAGES RESULTING FROM LOST DATA OR BUSINESS INTERRUPTION) ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THE BOT, WHETHER BASED ON WARRANTY, CONTRACT, TORT, OR ANY OTHER LEGAL THEORY, AND WHETHER OR NOT LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+                <p><strong>6.2.</strong> LICENSEE AGREES TO INDEMNIFY, DEFEND, AND HOLD HARMLESS LICENSOR FROM ANY AND ALL CLAIMS, DAMAGES, LOSSES, LIABILITIES, COSTS, AND EXPENSES (INCLUDING REASONABLE ATTORNEYS' FEES) ARISING FROM OR RELATING TO LICENSEE'S USE OF THE BOT, INCLUDING BUT NOT LIMITED TO ANY ILLEGAL OR UNETHICAL ACTIONS TAKEN BY LICENSEE USING THE BOT.</p>
+                <h3>7. Compliance with Laws:</h3>
+                <p><strong>7.1.</strong> The licensee is solely responsible for ensuring that their use of the Bot complies with all applicable local, state, national, and international laws and regulations.</p>
+                <p><strong>7.2.</strong> The Licensor explicitly disclaims any liability for any illegal or unethical use of the Bot by the Licensee.</p>
+                <h3>8. Ethical Use:</h3>
+                <p><strong>8.1.</strong> The licensee agrees to use the Bot ethically and not for any purposes that may cause harm, violate rights, or breach the privacy of others.</p>
+                <h3>9. Updates and Modifications:</h3>
+                <p><strong>9.1.</strong> The Licensor reserves the right to update, modify, or discontinue the Bot at any time without notice to the Licensee.</p>
+                <h3>10. Governing Law:</h3>
+                <p><strong>10.1.</strong> This License shall be governed by and construed per the laws of the State of California, United States. Any legal action or proceeding arising under this License shall be brought exclusively in the courts located in California.</p>
+                <h3>11. Severability:</h3>
+                <p><strong>11.1.</strong> If any provision of this License is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.</p>
+                <h3>12. Entire Agreement:</h3>
+                <p><strong>12.1.</strong> This License constitutes the entire agreement between the Licensor and Licensee regarding the Bot and supersedes all prior or contemporaneous agreements or understandings, written or oral, concerning the Bot.</p>
+                <p>By using the Bot, the Licensee acknowledges that they have read this License, understand it, and agree to be bound by its terms and conditions.</p>
+            </div>            
+            <div class="tab-content" id="TermsOfService">
+                <h2>Terms of Service</h2>
+                <p><strong>Effective Date:</strong> 7/7/2024</p>
+                <p><strong>1. Acceptance of Terms:</strong> By using the LegoHitsYou bot ("the Bot"), you agree to comply with and be bound by these Terms of Service. If you do not agree with these terms, you must cease using the Bot immediately.</p>
+                <p><strong>2. Use of the Bot:</strong></p>
+                <p><strong>2.1. Legal and Ethical Use:</strong> You agree not to use the Bot for any illegal or unethical purposes. This includes, but is not limited to, activities that violate any local, state, national, or international laws and regulations.</p>
+                <p><strong>2.2. Malicious Activity:</strong> You must not use the Bot for malicious activities, including hacking, spamming, or distributing harmful software. Any such activities will result in immediate termination of access to the Bot.</p>
+                <p><strong>2.3. Prohibited Language:</strong> The use of vulgar, abusive, or inappropriate language when interacting with the Bot is strictly prohibited. Violations may result in loss of access to the Bot.</p>
+                <p><strong>3. Compliance with Discord’s Terms of Service:</strong></p>
+                <p><strong>3.1. Discord's TOS:</strong> Your use of the Bot must comply with Discord’s Terms of Service. You can review Discord's Terms of Service at the following link: <a href="https://discord.com/terms">Discord Terms of Service</a>.</p>
+                <p><strong>4. Termination of Service:</strong></p>
+                <p><strong>4.1. Termination by the Licensor:</strong> LegoLovesYou ("Licensor") reserves the right to terminate or suspend your access to the Bot at any time, for any reason, without notice. This includes but is not limited to violations of these Terms of Service.</p>
+                <p><strong>4.2. Termination by the User:</strong> You may stop using the Bot at any time. Upon termination, all provisions of these Terms of Service that should reasonably survive termination will remain in effect.</p>
+                <p><strong>5. Limitation of Liability:</strong></p>
+                <p><strong>5.1. No Warranty:</strong> The Bot is provided "as is" without any warranties, express or implied. LegoLovesYou disclaims all warranties, including but not limited to, the warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+                <p><strong>5.2. Limitation of Liability:</strong> In no event shall LegoLovesYou be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the Bot, whether based on warranty, contract, tort, or any other legal theory.</p>
+                <p><strong>6. Governing Law:</strong> These Terms of Service shall be governed by and construed per the laws of the State of California, United States, without regard to its conflict of law principles. Any legal action or proceeding arising under these Terms of Service shall be brought exclusively in the courts located in California.</p>
+                <p><strong>7. Changes to the Terms of Service:</strong> LegoLovesYou reserves the right to update or modify these Terms of Service at any time without prior notice. Your continued use of the Bot after any changes indicates your acceptance of the new terms.</p>
+                <p><strong>8. Contact Information:</strong> If you have any questions or concerns about these Terms of Service, please contact us at [your contact information].</p>
+            </div>
+            <div class="tab-content" id="PrivacyPolicy">
+                <h2>Privacy Policy</h2>
+                <p><strong>Effective Date:</strong> 7/7/2024</p>
+                <p><strong>1. Introduction:</strong> Lego Loves You ("we," "our," "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use the LegoHitsYou bot ("the Bot"). By using the Bot, you consent to the practices described in this policy.</p>
+                <p><strong>2. Information We Collect:</strong></p>
+                <p><strong>2.1. User Data:</strong> We may collect certain data from users, such as Discord usernames, user IDs, and interactions with the Bot. This data is used to enhance user experience, track usage, and maintain the functionality of the Bot.</p>
+                <p><strong>2.2. Command Logs:</strong> We may log the commands you use with the Bot to improve services and troubleshoot issues. These logs do not contain personal conversations or sensitive information.</p>
+                <p><strong>3. How We Use Your Information:</strong></p>
+                <p><strong>3.1. Service Improvement:</strong> We use the collected data to improve and optimize the Bot’s performance, features, and security.</p>
+                <p><strong>3.2. Communication:</strong> We may use your information to communicate with you about updates, changes, or issues related to the Bot.</p>
+                <p><strong>3.3. Legal Compliance:</strong> We may use your data to comply with applicable laws and regulations or to protect our rights and the rights of others.</p>
+                <p><strong>4. Prohibited Uses:</strong></p>
+                <p><strong>4.1. Illegal Activities:</strong> You are prohibited from using the Bot for any illegal activities or in a manner that violates any local, state, national, or international laws and regulations.</p>
+                <p><strong>4.2. Malicious Purposes:</strong> You must not use the Bot for any malicious purposes, including but not limited to hacking, spamming, or distributing harmful software.</p>
+                <p><strong>4.3. Vulgarity and Abuse:</strong> The use of vulgar, abusive, or inappropriate language when interacting with the Bot may result in loss of access to the Bot.</p>
+                <p><strong>5. Data Sharing and Disclosure:</strong></p>
+                <p><strong>5.1. Third-Party Services:</strong> We do not share your data with third parties except when required by law or for legal compliance purposes.</p>
+                <p><strong>5.2. Legal Obligations:</strong> We may disclose your information if required to do so by law or in response to valid requests by public authorities.</p>
+                <p><strong>6. Data Security:</strong> We implement reasonable measures to protect your data from unauthorized access, disclosure, alteration, or destruction. However, please note that no security system is impenetrable, and we cannot guarantee the absolute security of your data.</p>
+                <p><strong>7. Children's Privacy:</strong> The Bot is not intended for use by individuals under the age of 13. We do not knowingly collect or solicit personal information from anyone under the age of 13. If we become aware that we have collected personal information from a child under 13, we will delete that information promptly.</p>
+                <p><strong>8. Changes to This Privacy Policy:</strong> We may update this Privacy Policy from time to time. Any changes will be effective immediately upon posting the updated policy. Your continued use of the Bot after any changes indicates your acceptance of the new policy.</p>
+                <p><strong>9. Contact Us:</strong> If you have any questions or concerns about this Privacy Policy or our practices, please contact us at [your contact information].</p>
+            </div>
+            <div class="tab-content" id="Credits">
+                <h3>Credits</h3>
+                <p><strong>Developer:</strong> LegoLovesYou<3</p>
+                <p><strong>Bot Contributors:</strong> Herawenn, Bosslawl, Q3y, Gmred</p>
+                <p><strong>Website Contributors:</strong> Above, Hated</p>
+                <p><strong>Bot Testers:</strong> Pugs, Swine, Alpha, Sour</p>
+                <p>I extend my heartfelt gratitude to all the amazing individuals who have contributed to the development and testing of the Bot. Your support and feedback have been invaluable in bringing this project to life.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <footer>
+            <p>&copy; 2024 Lego Loves You. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
